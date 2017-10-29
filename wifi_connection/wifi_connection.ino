@@ -6,15 +6,19 @@ const char* password = "salem2015";
 SoftwareSerial swSer(14, 12, false, 256);
 unsigned long mytime;
 
-void setup() {
-  // put your setup code here, to run once:
+void init_serial()
+{
   Serial.begin(115200);
   swSer.begin(115200);
 
   Serial.println("\nSoftware serial test started");
 
-   Serial.println();
   Serial.println();
+  Serial.println();
+}
+
+void wifi_connect()
+{
   Serial.print("Connecting to ");
   Serial.println(ssid);
   
@@ -31,12 +35,35 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void setup() {
+  // put your setup code here, to run once:
+  init_serial();
+  wifi_connect();
+}
+
+void print_ESP_time()
+{
+    // put your main code here, to run repeatedly:
   Serial.print("Time: ");
   mytime = millis();
   //prints time since program started
   Serial.println(mytime);
   // wait a second so as not to send massive amounts of data
-  delay(1000);
+  delay(5000);
+}
+
+void loop() 
+{
+  print_ESP_time();
+
+  if (  WiFi.status() == WL_CONNECTED)
+  {
+    Serial.print("\n Still Connected! \n");
+  }
+  else
+  {
+    wifi_connect();
+  }
+  
+   
 }
