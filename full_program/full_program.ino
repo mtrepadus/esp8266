@@ -7,8 +7,6 @@ const char* password = "salem2015";
 SoftwareSerial swSer(14, 12, false, 256);
 unsigned long mytime;
 
-
-
 /* Don't hardwire the IP address or we won't get the benefits of the pool.
  *  Lookup the IP address for the host name instead */
 IPAddress timeServerIP; // time.nist.gov NTP server address
@@ -19,10 +17,10 @@ unsigned int localPort = 2390;      // local port to listen for UDP packets
 
 // A UDP instance to let us send and receive packets over UDP
 WiFiUDP udp;
+byte gu8_PreviousGoodHour = 8;
+byte gu8_NbOfErrors = 0;
 
-int local_hour;
-
-void init_serial()
+void gogu_InitSerial()
 {
   Serial.begin(115200);
   swSer.begin(115200);
@@ -33,7 +31,7 @@ void init_serial()
   Serial.println();
 }
 
-void wifi_connect()
+void gogu_WifiConnect()
 {
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -56,8 +54,11 @@ void wifi_connect()
   Serial.println(udp.localPort());
 }
 
-int return_hour()
+byte gogu_ReturnCurentHour()
 {
+
+  byte lu8_returnValue;
+  
   //get a random server from the pool
   WiFi.hostByName(ntpServerName, timeServerIP); 
 
@@ -68,11 +69,12 @@ int return_hour()
   int cb = udp.parsePacket();
   if (!cb) {
     Serial.println("no packet yet");
+    return 255;
   }
   else {
-    Serial.print("packet received, length=");
-    Serial.println(cb);
-    // We've received a packet, read the data from it
+//    Serial.print("packet received, length=");
+//    Serial.println(cb);
+//    // We've received a packet, read the data from it
     udp.read(packetBuffer, NTP_PACKET_SIZE); // read the packet into the buffer
 
     //the timestamp starts at byte 40 of the received packet and is four bytes,
@@ -87,43 +89,44 @@ int return_hour()
     Serial.println(secsSince1900);
 
     // now convert NTP time into everyday time:
-    Serial.print("Unix time = ");
+ //   Serial.print("Unix time = ");
     // Unix time starts on Jan 1 1970. In seconds, that's 2208988800:
     const unsigned long seventyYears = 2208988800UL;
     // subtract seventy years:
     unsigned long epoch = secsSince1900 - seventyYears;
     // print Unix time:
-    Serial.println(epoch);
+//    Serial.println(epoch);
 
   	int UTC_hour 	= (epoch  % 86400L) / 3600;
 
 
-    local_hour = UTC_hour + 2;
+    lu8_returnValue = UTC_hour + 2;
+	
     // print the hour, minute and second:
-    Serial.print("The UTC time is ");       // UTC is the time at Greenwich Meridian (GMT)
-    Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
-    Serial.print(':');
-    if ( ((epoch % 3600) / 60) < 10 ) {
-      // In the first 10 minutes of each hour, we'll want a leading '0'
-      Serial.print('0');
-    }
-    Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
-    Serial.print(':');
-    if ( (epoch % 60) < 10 ) {
-      // In the first 10 seconds of each minute, we'll want a leading '0'
-      Serial.print('0');
-    }
-    Serial.println(epoch % 60); // print the second
+//    Serial.print("The UTC time is ");       // UTC is the time at Greenwich Meridian (GMT)
+//    Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
+//    Serial.print(':');
+//    if ( ((epoch % 3600) / 60) < 10 ) {
+//      // In the first 10 minutes of each hour, we'll want a leading '0'
+//      Serial.print('0');
+//    }
+//    Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
+//    Serial.print(':');
+//    if ( (epoch % 60) < 10 ) {
+//      // In the first 10 seconds of each minute, we'll want a leading '0'
+//      Serial.print('0');
+//    }
+//    Serial.println(epoch % 60); // print the second
   }
   
-	return local_hour;
+	return lu8_returnValue;
 
 }
 
 // send an NTP request to the time server at the given address
 unsigned long sendNTPpacket(IPAddress& address)
 {
-  Serial.println("sending NTP packet...");
+//  Serial.println("sending NTP packet...");
   // set all bytes in the buffer to 0
   memset(packetBuffer, 0, NTP_PACKET_SIZE);
   // Initialize values needed to form NTP request
@@ -147,8 +150,8 @@ unsigned long sendNTPpacket(IPAddress& address)
 
 void setup() {
   // put your setup code here, to run once:
-  init_serial();
-  wifi_connect();
+  gogu_InitSerial();
+  gogu_WifiConnect();
 }
 
 void print_ESP_time()
@@ -164,23 +167,38 @@ void print_ESP_time()
 
 void loop() 
 {
-   // print_ESP_time();
-
+  // print_ESP_time();
+  byte lu8_localHour;
+  
   if (  WiFi.status() == WL_CONNECTED)
   {
     Serial.print("\n Still Connected!\n");
   }
   else
   {
-    wifi_connect();
+    gogu_WifiConnect();
   }
 
-  return_hour();
+  lu8_localHour = gogu_ReturnCurentHour();
   
   Serial.print("Local Hour : ");
-  Serial.println(local_hour);
-  //prints time since program started
-  //Serial.println(return_hour());
+  if (lu8_localHour != 255)
+  {
+    gu8_NbOfErrors = 0;
+    gu8_PreviousGoodHour = lu8_localHour;
+    Serial.println(lu8_localHour);
+  }
+  else
+  {
+    gu8_NbOfErrors++;
+    if (gu8_NbOfErrors > 60)
+    {
+      gu8_PreviousGoodHour = 8;
+      //ESP.restart();
+    }
+    Serial.print(" Error, no hour received; previous hour was: ");
+    Serial.println(gu8_PreviousGoodHour);
+  }
   
   // wait ten seconds before asking for the time again
   delay(20000);
