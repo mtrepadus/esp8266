@@ -1,0 +1,79 @@
+21:36:37 **** Incremental Build of configuration Release for project gogu_prj ****
+"C:\\sloeber\\arduinoPlugin\\tools\\make\\make" all 
+'Create eeprom image'
+"C:\sloeber\/arduinoPlugin/packages/esp8266/tools/esptool/0.4.8/esptool.exe" -eo "C:\sloeber\/arduinoPlugin/packages/esp8266/hardware/esp8266/2.2.0/bootloaders/eboot/eboot.elf" -bo "C:/ESP/esp8266/Gogu/gogu_prj/Release/gogu_prj.bin" -bm dio -bf 40 -bz 4M -bs .text -bp 4096 -ec -eo "C:/ESP/esp8266/Gogu/gogu_prj/Release/gogu_prj.elf" -bs .irom0.text -bs .text -bs .data -bs .rodata -bc -ec
+'Finished building: gogu_prj.hex'
+' '
+'Building target: gogu_prj'
+'Printing size:'
+"C:\sloeber\/arduinoPlugin/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/bin/xtensa-lx106-elf-size" -A "C:/ESP/esp8266/Gogu/gogu_prj/Release/gogu_prj.elf"
+C:/ESP/esp8266/Gogu/gogu_prj/Release/gogu_prj.elf  :
+section                                                           size         addr
+.data                                                              912   1073643520
+.rodata                                                           1844   1073644432
+.bss                                                             30128   1073646280
+.irom0.text                                                     204096   1075843088
+.text                                                            29825   1074790400
+.debug_frame                                                     30496            0
+.debug_info                                                     479962            0
+.debug_abbrev                                                    70231            0
+.debug_loc                                                      159772            0
+.debug_aranges                                                    9088            0
+.debug_ranges                                                    19440            0
+.debug_line                                                     165062            0
+.debug_str                                                       84569            0
+.comment                                                          8920            0
+.xtensa.info                                                        56            0
+.xt.prop._ZN6Stream9readBytesEPhj                                   36            0
+.xt.prop._ZTV14SoftwareSerial                                       12            0
+.xt.lit._ZN10W5100Class11writeSnDIPREhPh                             0            0
+.xt.lit._ZN10W5100Class6readSnEht                                    0            0
+.xt.lit._ZN10W5100Class8readSnIREh                                   0            0
+.xt.lit._ZN10W5100Class7writeSnEhth                                  0            0
+.xt.lit._ZN10W5100Class11writeSnPORTEht                              0            0
+.xt.lit._ZN10W5100Class9writeSnIREhh                                 0            0
+.xt.lit._ZN10W5100Class12writeSnDPORTEht                             0            0
+.xt.prop._ZN10W5100Class11writeSnDIPREhPh                           36            0
+.xt.prop._ZN10W5100Class6readSnEht                                  36            0
+.xt.prop._ZN10W5100Class8readSnIREh                                 36            0
+.xt.prop._ZN10W5100Class7writeSnEhth                                36            0
+.xt.prop._ZN10W5100Class11writeSnPORTEht                            36            0
+.xt.prop._ZN10W5100Class9writeSnIREhh                               36            0
+.xt.prop._ZN10W5100Class12writeSnDPORTEht                           36            0
+.xt.lit._ZN10W5100Class12readSnTX_FSREh                              0            0
+.xt.lit._ZN10W5100Class12readSnRX_RSREh                              0            0
+.xt.prop._ZN10W5100Class12readSnTX_FSREh                            36            0
+.xt.prop._ZN10W5100Class12readSnRX_RSREh                            36            0
+.xt.lit._ZN11EthernetUDP8remoteIPEv                                  0            0
+.xt.prop._ZN11EthernetUDP4readEPcj                                  36            0
+.xt.prop._ZN11EthernetUDP8remoteIPEv                                36            0
+.xt.prop._ZN11EthernetUDP10remotePortEv                             36            0
+.xt.prop._ZTV11EthernetUDP                                          12            0
+.xt.lit._ZN13ClientContext5flushEv                                   0            0
+.xt.lit._ZN13ClientContext5unrefEv                                   0            0
+.xt.prop._ZN13ClientContext5flushEv                                 60            0
+.xt.prop._ZN13ClientContext5unrefEv                                 60            0
+.xt.lit._ZN10UdpContext7_s_recvEPvP7udp_pcbP4pbufP7ip_addrt          0            0
+.xt.lit._ZN10UdpContextC2Ev                                          0            0
+.xt.lit._ZN10UdpContext5unrefEv                                      0            0
+.xt.prop._ZN7WiFiUDP4readEPcj                                       36            0
+.xt.prop._ZN10UdpContext7_s_recvEPvP7udp_pcbP4pbufP7ip_addrt        60            0
+.xt.prop._ZN10UdpContextC2Ev                                        36            0
+.xt.prop._ZN10UdpContext5unrefEv                                    48            0
+.xt.prop._ZTV7WiFiUDP                                               12            0
+.xt.lit._ZN14HardwareSerialD2Ev                                      8            0
+.xt.lit._ZN14HardwareSerialD0Ev                                      0            0
+.xt.prop._ZN14HardwareSerialD2Ev                                    36            0
+.xt.prop._ZN14HardwareSerialD0Ev                                    36            0
+.xt.prop._ZTV14HardwareSerial                                       12            0
+.xt.prop._ZTV9IPAddress                                             12            0
+.xt.lit._ZN5Print5writeEPKc                                          0            0
+.xt.prop._ZN5Print5writeEPKc                                        48            0
+Total                                                          1295357
+
+
+'Finished building target: gogu_prj'
+' '
+
+21:36:40 Build Finished (took 2s.266ms)
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;gogu_prj/wifi&apos; to &apos;wifi.ino&apos;" description="Rename resource &apos;wifi&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="wifi" name="wifi.ino" stamp="1509811644063" updateReferences="true"/>
+</session>

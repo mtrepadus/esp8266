@@ -1,0 +1,20 @@
+#include <DHT.h>
+#define DHTTYPE DHT11
+#define DHTPIN  2
+
+DHT dht(DHTPIN, DHTTYPE, 11); // 11 works fine for ESP8266
+float humidity, temp_f;  // Values read from sensor
+
+
+float gogu_getDHT_data()
+{
+	dht.begin();
+	delay(500);
+
+	temp_f = 255;
+	temp_f = dht.readTemperature(true);
+
+	Serial.println("DHT11 temperature : ");
+	Serial.print(temp_f);
+	return temp_f;
+}
