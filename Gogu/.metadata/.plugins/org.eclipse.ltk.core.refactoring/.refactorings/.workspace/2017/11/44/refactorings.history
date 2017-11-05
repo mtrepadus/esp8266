@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;gogu_prj/libraries/WiFi&apos;" deleteContents="false" description="Delete resource &apos;gogu_prj/libraries/WiFi&apos;" element1="/gogu_prj/libraries/WiFi" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1509823786307"/>&#x0A;<refactoring comment="Delete resource &apos;gogu_prj/libraries/SD&apos;" deleteContents="false" description="Delete resource &apos;gogu_prj/libraries/SD&apos;" element1="/gogu_prj/libraries/SD" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1509823834414"/>
-</session>
