@@ -1,8 +1,6 @@
 void gogu_InitSerial()
 {
   Serial.begin(115200);
-  swSer.begin(115200);
-
   Serial.println("\nSoftware serial test started");
 
   Serial.println();

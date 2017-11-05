@@ -15,7 +15,7 @@ WiFiUDP udp;
 
 
 
-boolean gogu_ReturnCurentHour(S_TIME_STRUCT *time)
+boolean gogu_ReturnCurentHour(S_DATA_STRUCT *time)
 {
 	boolean lu8_returnValue = 0;
 	byte lu8_count = 0;

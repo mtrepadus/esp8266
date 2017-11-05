@@ -21,12 +21,10 @@
 								<option id="io.sloeber.compiler.cpp.sketch.option.incpath.620532913" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SoftwareSerial}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SPI}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.890575532" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
@@ -35,12 +33,10 @@
 								<option id="io.sloeber.compiler.c.sketch.option.incpath.1217257838" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SoftwareSerial}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SPI}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1899756508" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
@@ -49,12 +45,10 @@
 								<option id="io.sloeber.compiler.asm.sketch.option.incpath.1601140266" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/ESP8266WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SoftwareSerial}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/DHT}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/Ethernet/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gogu_prj/libraries/SPI}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.686764886" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>

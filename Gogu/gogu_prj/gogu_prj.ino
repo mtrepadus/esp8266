@@ -6,8 +6,6 @@
 
 const char* ssid     = "DIGI-8N2x";
 const char* password = "salem2015";
-SoftwareSerial swSer(14, 12, false, 256);
-S_TIME_STRUCT timeStruct;
 
 byte gu8_PreviousGoodHour = 8;
 byte gu8_NbOfErrors = 0;
@@ -17,12 +15,14 @@ void setup() {
   // put your setup code here, to run once:
   gogu_InitSerial();
   gogu_WifiConnect();
+  gogu_setPinDirection(RED_LED, OUTPUT);
+  gogu_setPinDirection(GREEN_LED, OUTPUT);
 }
 
 void loop()
 {
-  // print_ESP_time();
   byte lu8_localHour = 0;
+  S_DATA_STRUCT s_Data;
 
   if (  WiFi.status() == WL_CONNECTED)
   {
@@ -33,16 +33,16 @@ void loop()
     gogu_WifiConnect();
   }
 
-  lu8_localHour = gogu_ReturnCurentHour(&timeStruct);
+  lu8_localHour = gogu_ReturnCurentHour(&s_Data);
 
 
   Serial.print("Local Hour : ");
   if (lu8_localHour != 0)
   {
     gu8_NbOfErrors = 0;
-    gu8_PreviousGoodHour = timeStruct.hour;
-    Serial.print(timeStruct.hour);
-    Serial.println(timeStruct.minutes);
+    gu8_PreviousGoodHour = s_Data.hour;
+    Serial.print(s_Data.hour);
+    Serial.println(s_Data.minutes);
   }
   else
   {
@@ -56,7 +56,14 @@ void loop()
     Serial.println(gu8_PreviousGoodHour);
   }
 
-  gogu_getDHT_data();
+  if(gogu_getDHT_data(&s_Data))
+  {
+    gogu_blinkLed(GREEN_LED,s_Data.temperature );
+  }
+  else
+  {
+    gogu_blinkLed(RED_LED, 3 );
+  }
 
   if((lu8_localHour >= 8) && (lu8_localHour >= 22))
   {
@@ -66,6 +73,8 @@ void loop()
   {
 
   }
+
+  //gogu_sendDataToBlynk(s_blynkData);
   // wait ten seconds before asking for the time again
   delay(20000);
 

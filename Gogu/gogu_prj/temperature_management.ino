@@ -1,28 +1,29 @@
 #include <DHT.h>
-
-#define DHTTYPE DHT11
-#define DHTPIN  2
+#include "gogu.h"
 
 DHT dht(DHTPIN, DHTTYPE, 11); // 11 works fine for ESP8266
 float humidity, temp_f;  // Values read from sensor
 
-
-float gogu_getDHT_data()
+boolean gogu_getDHT_data(S_DATA_STRUCT *climate)
 {
-	dht.begin();
-	delay(500);
+  boolean lu8_returnValue = 1;
+  dht.begin();
+  delay(1000);
+  
+ // climate->humidity = dht.readHumidity();
+  climate->temperature = dht.readTemperature(); // or dht.readTemperature(true) for Fahrenheit
 
-	temp_f = dht.readTemperature(true);
-
-	if (isnan(temp_f))
+	if (isnan(climate->temperature))
 	{
 		Serial.println("ERROR : DHT11 temperature!!");
-		temp_f = 255;
+    climate->temperature = 255;
+    lu8_returnValue = 0;
 	}
 	else
 	{
 		Serial.print("DHT11 temperature : ");
-		Serial.println(temp_f);
+		Serial.println(climate->temperature);
+    
 	}
-	return temp_f;
+	return lu8_returnValue;
 }
